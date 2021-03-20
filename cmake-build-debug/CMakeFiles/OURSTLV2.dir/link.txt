@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/OURSTLV2.dir/main.cpp.o  -o OURSTLV2 
