@@ -23,7 +23,7 @@ namespace OurSTL {
         /*
          * std::size_t type object hol
          */
-        std::size_t size;
+        std::size_t Size;
     public:
         // Constructors
         /*
@@ -131,19 +131,177 @@ namespace OurSTL {
         constexpr T* data() noexcept;
         constexpr const T* data() const noexcept;
 
+
         // Iterators
+        /*
+         * Parameters
+         * (none)
+         * Return value
+         * Iterator to the first element.
+         * Complexity
+         * Constant.
+         */
         constexpr T* begin() noexcept;
         constexpr const T* begin() const noexcept;
+<<<<<<< HEAD
+=======
+        constexpr const T* cbegin() const noexcept;
+
+        /*
+         * Parameter
+         * (none)
+         * Return value
+         * Iterator to the element following the last element.
+         * Complexity
+         * Constant.
+         */
+        constexpr T* end() noexcept;
+        constexpr const T* end() const noexcept;
+        constexpr const T* cend() const noexcept;
+
+        /*
+         * Parameter
+         * (none)
+         * Return value
+         * Iterator to the element following the last element.
+         * Complexity
+         * Constant.
+         */
+        constexpr T* rbegin() noexcept;
+        constexpr const T* rbegin() const noexcept;
+        constexpr const T* crbegin() const noexcept;
+
+        /*
+         * Parameter
+         * (none)
+         * Return value
+         * Iterator to the element following the last element.
+         * Complexity
+         * Constant.
+         */
+        consteval T* rend() noexcept;
+        constexpr const T* rend() const noexcept;
+        constexpr const T* crend() const noexcept;
+
+>>>>>>> f2d6c56ee001f8f6e1af9ac30a77552d298cac85
 
         // Capacity
+        /*
+         *Parameters
+         * (none)
+         * Return value
+         * true if the container is empty, false otherwise
+         * Complexity
+         * Constant.
+         */
+        [[nodiscard]] constexpr bool empty() const noexcept;
 
-        // Operators
+        /*
+         *Parameters
+         * (none)
+         * Return value
+         * The number of elements in the container.
+         * Complexity
+         * Constant.
+         */
+        constexpr size_t size() const noexcept;
+
+        /*
+         *Parameters
+         * (none)
+         * Return value
+         * Maximum number of elements.
+         * Complexity
+         * Constant.
+         */
+        constexpr size_t max_size() const noexcept;
+
+
+        // Operations
+        /*
+         *Parameters
+         * value	-	the value to assign to the elements
+         * Return value
+         * (none)
+         * Complexity
+         * Linear in the size of the container.
+         */
+        constexpr void fill(const T& value);
+
+        /*
+         *Parameters
+         * other	-	container to exchange the contents with
+         * Return value
+         * (none)
+         */
+        constexpr void swap( Array<T,N> & other) noexcept(std::is_nothrow_swappable_v<T>);
 
 
         // Non-Member functions
+        /*
+         * Parameters
+         * lhs, rhs	-	arrays whose contents to compare
+         * -T must meet the requirements of EqualityComparable in order to use overloads (1-2).
+         * -T must meet the requirements of LessThanComparable in order to use overloads (3-6).
+         * The ordering relation must establish total order.
+         * Complexity
+         * Linear in the size of the array
+         */
+        friend bool operator==(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
+        friend constexpr bool operator==(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
+        friend bool operator!=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
+        friend bool operator<(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
+        friend bool operator>(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
+        friend bool operator<=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
+        friend bool operator>=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
 
+        /*
+         * Extracts the Ith element element from the array.
+         * I must be an integer value in range [0, N).
+         * This is enforced at compile time as opposed to at() or operator[].
+         * Parameters
+         * a	-	array whose contents to extract
+         * Return value
+         * A reference to the Ith element of a.
+         * Complexity
+         * Constant.
+         */
+        friend constexpr T& get(OurSTL::Array<T,N> & array1) noexcept;
+        friend constexpr T&& get(OurSTL::Array<T,N> && array1) noexcept;
+        friend constexpr const T& get(OurSTL::Array<T,N> & array1) noexcept;
+        friend constexpr const T && get(OurSTL::Array<T,N> && array1) noexcept;
 
+        /*
+         *Parameters
+         * lhs, rhs	-	containers whose contents to swap
+         * Return value
+         * (none)
+         * Complexity
+         * Linear in size of the container
+         */
+        friend void swap(OurSTL::Array<T,N> &lhs, OurSTL::Array<T,N> & rhs) noexcept;
+        friend constexpr void swap(OurSTL::Array<T,N> &lhs, OurSTL::Array<T,N> & rhs) noexcept;
+
+        /*
+         *Parameters
+         * a	-	the built-in array to be converted the std::array
+         * Type requirements
+         * -T must meet the requirements of CopyConstructible in order to use overload (1).
+         * -T must meet the requirements of MoveConstructible in order to use overload (2).
+         * Return value
+         * 1) std::array<std::remove_cv_t<T>, N>{ a[0], ..., a[N - 1] }
+         * 2) std::array<std::remove_cv_t<T>, N>{ std::move(a[0]), ..., std::move(a[N - 1]) }
+         */
+        friend constexpr OurSTL::Array<std::remove_cv_t<T>,N> to_array(T (&a) [N]);
+        friend constexpr OurSTL::Array<std::remove_cv_t<T>,N> to_array(T (&&a) [N]);
     };
+
+    template<std::size_t I,typename T,std::size_t N>
+    constexpr T &get(Array<T, N> &array1) noexcept {
+        return nullptr;
+    }
+
+
 }
 
 #endif //OURSTLV2_ARRAY_H
