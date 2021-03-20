@@ -134,7 +134,6 @@ namespace OurSTL {
         // Iterators
         constexpr T* begin() noexcept;
         constexpr const T* begin() const noexcept;
-        constexpr const
 
         // Capacity
 
