@@ -2,8 +2,8 @@
 // Created by arthurdovlat on 3/18/21.
 //
 
-#ifndef OURSTLV2_ARRAY_H
-#define OURSTLV2_ARRAY_H
+#ifndef OURSTL_ARRAY_H
+#define OURSTL_ARRAY_H
 
 #include <cstdlib>
 #include <initializer_list>
@@ -297,8 +297,6 @@ namespace OurSTL {
     constexpr T &get(Array<T, N> &array1) noexcept {
         return nullptr;
     }
-
-
 }
 
 #endif //OURSTLV2_ARRAY_H
