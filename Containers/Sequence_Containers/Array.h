@@ -25,41 +25,80 @@ namespace OurSTL {
          */
         std::size_t Size;
     public:
+        typedef T* iterator;
+        typedef const T* const_iterator;
+        typedef std::reverse_iterator<iterator> reverse_iterator;
+        typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
         // Constructors
         /*
          * Creates an array of type T and size N
          * All elements are empty
          * size is initialized to 0
          */
-        constexpr Array();
+        constexpr Array() : Size(0) {}
 
         /*
          * Support for aggregate initialization
          * Creates an array of type T and Size N
          * All elements are set to the elements of il
          */
-        constexpr Array(const std::initializer_list<T> &il);
+        constexpr Array(const std::initializer_list<T>& il) {
+            if (il.size() > N) {
+                throw std::logic_error("Invalid initializerList");
+            }
+            Size = 0;
+            for (auto i = il.begin(); i != il.end(); ++i) {
+                array[Size++] = *i;
+            }
+        }
 
         /*
          * Creates a copy of the array1
          */
-        constexpr Array(Array<T,N> &array1);
+        constexpr Array(Array<T,N>& array1) : Size(array1.size()) {
+            for (int i = 0; i < array1.size(); ++i) {
+                array[i] = array1.array[i];
+            }
+        }
 
         /*
          * Creates a copy of the array1
          */
-        constexpr Array & operator=(Array<T,N> &array1);
+        constexpr Array& operator=(Array<T,N>& array1) {
+            if (*this == array1) {
+                return *this;
+            }
+            Size = array1.size();
+            for (int i = 0; i < array1.size(); ++i) {
+                array[i] = array1.array[i];
+            }
+            return *this;
+        }
 
         /*
          * Moves the array1 rv
          */
-        constexpr Array(Array<T,N> &&array1);
+        constexpr Array(Array<T,N>&& array1) : Size(array1.size()) {
+            for (int i = 0; i < array1.size(); ++i) {
+                array[i] = array1.array[i];
+            }
+        }
 
         /*
          * Moves the array1 rv
          */
-        constexpr Array & operator=(Array<T,N> &&array1);
+        constexpr Array& operator=(Array<T,N>&& array1) {
+            if (*this == array1) {
+                return *this;
+            }
+            Size = array1.size();
+            for (int i = 0; i < array1.size(); ++i) {
+                array[i] = array1.array[i];
+            }
+        }
 
+        ~Array() = default;
 
         // Element Access
         /*
@@ -72,8 +111,18 @@ namespace OurSTL {
          * Complexity
          * Constant
          */
-        constexpr T& at(std::size_t pos );
-        constexpr const T& at(std::size_t pos) const;
+        constexpr T& at(std::size_t pos) {
+            if (pos < 0 || pos > Size) {
+                throw std::out_of_range("Invalid index");
+            }
+            return array[pos];
+        }
+        constexpr const T& at(std::size_t pos) const {
+            if (pos < 0 || pos > Size) {
+                throw std::out_of_range("Invalid index");
+            }
+            return array[pos];
+        }
 
         /*
          *Parameters
@@ -84,8 +133,12 @@ namespace OurSTL {
          * Constant.
          * Returns a reference to the element at specified location pos. No bounds checking is performed.
          */
-        constexpr T& operator[](std::size_t pos );
-        constexpr const T& operator[](std::size_t pos) const;
+        constexpr T& operator[](std::size_t pos ) {
+            return array[pos];
+        }
+        constexpr const T& operator[](std::size_t pos) const {
+            return array[pos];
+        }
 
         /*
          *Parameters
@@ -99,8 +152,12 @@ namespace OurSTL {
          * Returns a reference to the first element in the container.
          * Calling front on an empty container causes undefined behavior.
          */
-        constexpr T& front();
-        constexpr const T& front() const;
+        constexpr T& front() {
+            return *begin();
+        }
+        constexpr const T& front() const {
+            return *cbegin();
+        }
 
         /*
          * Parameters
@@ -114,8 +171,12 @@ namespace OurSTL {
          * Returns a reference to the last element in the container.
          * Calling back on an empty container causes undefined behavior.
          */
-        constexpr T& back();
-        constexpr const T& back() const;
+        constexpr T& back() {
+            return N ? *(end() - 1) : *end();
+        }
+        constexpr const T& back() const {
+            return N ? *(cend() - 1) : *cend();
+        }
 
         /*
          *Parameters
@@ -128,8 +189,12 @@ namespace OurSTL {
          * The pointer is such that range [data(); data() + size()) is always a valid range,
          * even if the container is empty (data() is not dereferenceable in that case).
          */
-        constexpr T* data() noexcept;
-        constexpr const T* data() const noexcept;
+        constexpr T* data() noexcept {
+            return array;
+        }
+        constexpr const T* data() const noexcept {
+            return array;
+        }
 
 
         // Iterators
@@ -141,9 +206,15 @@ namespace OurSTL {
          * Complexity
          * Constant.
          */
-        constexpr T* begin() noexcept;
-        constexpr const T* begin() const noexcept;
-        constexpr const T* cbegin() const noexcept;
+        constexpr T* begin() noexcept {
+            return iterator(array);
+        }
+        constexpr const T* begin() const noexcept {
+            return const_iterator(array);
+        }
+        constexpr const T* cbegin() const noexcept {
+            return const_iterator(array);
+        }
 
         /*
          * Parameter
@@ -153,9 +224,15 @@ namespace OurSTL {
          * Complexity
          * Constant.
          */
-        constexpr T* end() noexcept;
-        constexpr const T* end() const noexcept;
-        constexpr const T* cend() const noexcept;
+        constexpr T* end() noexcept {
+            return iterator(array + Size);
+        }
+        constexpr const T* end() const noexcept {
+            return const_iterator(array + Size);
+        }
+        constexpr const T* cend() const noexcept {
+            return const_iterator(array + Size);
+        }
 
         /*
          * Parameter
@@ -165,9 +242,15 @@ namespace OurSTL {
          * Complexity
          * Constant.
          */
-        constexpr T* rbegin() noexcept;
-        constexpr const T* rbegin() const noexcept;
-        constexpr const T* crbegin() const noexcept;
+        constexpr T* rbegin() noexcept {
+            return reverse_iterator(end());
+        }
+        constexpr const T* rbegin() const noexcept {
+            return const_reverse_iterator(end());
+        }
+        constexpr const T* crbegin() const noexcept {
+            return const_reverse_iterator(end());
+        }
 
         /*
          * Parameter
@@ -177,9 +260,15 @@ namespace OurSTL {
          * Complexity
          * Constant.
          */
-        consteval T* rend() noexcept;
-        constexpr const T* rend() const noexcept;
-        constexpr const T* crend() const noexcept;
+        constexpr T* rend() noexcept {
+            return reverse_iterator(begin());
+        }
+        constexpr const T* rend() const noexcept {
+            return const_reverse_iterator(cbegin());
+        }
+        constexpr const T* crend() const noexcept {
+            return const_reverse_iterator(cbegin());
+        }
 
 
         // Capacity
@@ -191,7 +280,9 @@ namespace OurSTL {
          * Complexity
          * Constant.
          */
-        [[nodiscard]] constexpr bool empty() const noexcept;
+        [[nodiscard]] constexpr bool empty() const noexcept {
+            return Size == 0;
+        }
 
         /*
          *Parameters
@@ -201,7 +292,9 @@ namespace OurSTL {
          * Complexity
          * Constant.
          */
-        constexpr size_t size() const noexcept;
+        constexpr size_t size() const noexcept {
+            return Size;
+        }
 
         /*
          *Parameters
@@ -211,7 +304,9 @@ namespace OurSTL {
          * Complexity
          * Constant.
          */
-        constexpr size_t max_size() const noexcept;
+        constexpr size_t max_size() const noexcept {
+            return N;
+        }
 
 
         // Operations
@@ -223,7 +318,9 @@ namespace OurSTL {
          * Complexity
          * Linear in the size of the container.
          */
-        constexpr void fill(const T& value);
+        constexpr void fill(const T& value) {
+            std::fill_n(begin(),size(),value);
+        }
 
         /*
          *Parameters
@@ -231,7 +328,9 @@ namespace OurSTL {
          * Return value
          * (none)
          */
-        constexpr void swap( Array<T,N> & other) noexcept(std::is_nothrow_swappable_v<T>);
+        constexpr void swap( Array<T,N> & other) noexcept(std::is_nothrow_swappable_v<T>) {
+            std::swap_ranges(begin(),end(),other.begin());
+        }
 
 
         // Non-Member functions
@@ -244,29 +343,27 @@ namespace OurSTL {
          * Complexity
          * Linear in the size of the array
          */
-        friend bool operator==(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
-        friend constexpr bool operator==(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
-        friend bool operator!=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
-        friend bool operator<(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
-        friend bool operator>(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
-        friend bool operator<=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
-        friend bool operator>=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs);
+        friend bool operator==(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs) {
+            return std::equal(lhs.begin(),lhs.end(),lhs.end());
+        }
+        friend bool operator!=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs) {
+            return !(lhs == rhs);
+        }
+        friend bool operator<(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs) {
+            return std::lexicographical_compare(lhs.begin(),lhs.end(),rhs.begin(),rhs.end());
+        }
+        friend bool operator>(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs) {
+            return rhs < lhs;
+        }
+        friend bool operator<=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs) {
+            return !(lhs > rhs);
+        }
+        friend bool operator>=(const OurSTL::Array<T,N> &lhs,const OurSTL::Array<T,N> &rhs) {
+            return !(lhs < rhs);
+        }
 
-        /*
-         * Extracts the Ith element element from the array.
-         * I must be an integer value in range [0, N).
-         * This is enforced at compile time as opposed to at() or operator[].
-         * Parameters
-         * a	-	array whose contents to extract
-         * Return value
-         * A reference to the Ith element of a.
-         * Complexity
-         * Constant.
-         */
-        friend constexpr T& get(OurSTL::Array<T,N> & array1) noexcept;
-        friend constexpr T&& get(OurSTL::Array<T,N> && array1) noexcept;
-        friend constexpr const T& get(OurSTL::Array<T,N> & array1) noexcept;
-        friend constexpr const T && get(OurSTL::Array<T,N> && array1) noexcept;
+
+
 
         /*
          *Parameters
@@ -276,8 +373,9 @@ namespace OurSTL {
          * Complexity
          * Linear in size of the container
          */
-        friend void swap(OurSTL::Array<T,N> &lhs, OurSTL::Array<T,N> & rhs) noexcept;
-        friend constexpr void swap(OurSTL::Array<T,N> &lhs, OurSTL::Array<T,N> & rhs) noexcept;
+        friend constexpr void swap(OurSTL::Array<T,N> &lhs, OurSTL::Array<T,N> & rhs) noexcept {
+            lhs.swap(rhs);
+        }
 
         /*
          *Parameters
@@ -292,11 +390,33 @@ namespace OurSTL {
         friend constexpr OurSTL::Array<std::remove_cv_t<T>,N> to_array(T (&a) [N]);
         friend constexpr OurSTL::Array<std::remove_cv_t<T>,N> to_array(T (&&a) [N]);
     };
-
-    template<std::size_t I,typename T,std::size_t N>
-    constexpr T &get(Array<T, N> &array1) noexcept {
-        return nullptr;
-    }
+//TODO
+//    /*
+//     * Extracts the Ith element element from the array.I must be an integer value in range [0, N).
+//     * This is enforced at compile time as opposed to at() or operator[].
+//     * Parameters
+//     * a	-	array whose contents to extract
+//     * Return value
+//     * A reference to the Ith element of a.
+//     * Complexity
+//     * Constant.
+//     */
+//    template< std::size_t I, class T, std::size_t N >
+//    constexpr T& get( OurSTL::Array<T,N>& a ) noexcept {
+//        if ()
+//    }
+//    template< std::size_t I, class T, std::size_t N >
+//    constexpr T&& get( OurSTL::Array<T,N>&& a ) noexcept {
+//
+//    }
+//    template< std::size_t I, class T, std::size_t N >
+//    constexpr const T& get( const OurSTL::Array<T,N>& a ) noexcept {
+//
+//    }
+//    template< std::size_t I, class T, std::size_t N >
+//    constexpr const T&& get( const OurSTL::Array<T,N>&& a ) noexcept {
+//
+//    }
 }
 
 #endif //OURSTLV2_ARRAY_H
