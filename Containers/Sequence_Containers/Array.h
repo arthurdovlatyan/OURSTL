@@ -206,6 +206,7 @@ namespace OurSTL {
          * Complexity
          * Constant.
          */
+
         constexpr T* begin() noexcept {
             return iterator(array);
         }
@@ -215,6 +216,13 @@ namespace OurSTL {
         constexpr const T* cbegin() const noexcept {
             return const_iterator(array);
         }
+
+        constexpr T* begin() noexcept;
+        constexpr const T* begin() const noexcept;
+
+
+        constexpr const T* cbegin() const noexcept;
+
 
         /*
          * Parameter
@@ -269,6 +277,7 @@ namespace OurSTL {
         constexpr const T* crend() const noexcept {
             return const_reverse_iterator(cbegin());
         }
+
 
 
         // Capacity

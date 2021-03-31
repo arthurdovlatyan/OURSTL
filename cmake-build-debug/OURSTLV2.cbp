@@ -8,102 +8,100 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug"/>
+				<Option working_dir="/Users/skh/project/OURSTL/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug"/>
+				<Option working_dir="/Users/skh/project/OURSTL/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug"/>
+				<Option working_dir="/Users/skh/project/OURSTL/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OURSTLV2">
-				<Option output="/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/OURSTLV2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug"/>
+				<Option output="/Users/skh/project/OURSTL/cmake-build-debug/OURSTLV2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skh/project/OURSTL/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 OURSTLV2"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 OURSTLV2"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OURSTLV2/fast">
-				<Option output="/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/OURSTLV2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug"/>
+				<Option output="/Users/skh/project/OURSTL/cmake-build-debug/OURSTLV2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skh/project/OURSTL/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 OURSTLV2/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/arthurdovlat/CLionProjects/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 OURSTLV2/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skh/project/OURSTL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/Containers/Sequence_Containers/Array.h">
+		<Unit filename="/Users/skh/project/OURSTL/Containers/Sequence_Containers/Array.h">
 			<Option target="OURSTLV2"/>
 		</Unit>
-		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/Containers/Sequence_Containers/Deque.h">
+		<Unit filename="/Users/skh/project/OURSTL/Containers/Sequence_Containers/Deque.h">
 			<Option target="OURSTLV2"/>
 		</Unit>
-		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/Containers/Sequence_Containers/Forward_List.h">
+		<Unit filename="/Users/skh/project/OURSTL/Containers/Sequence_Containers/Forward_List.h">
 			<Option target="OURSTLV2"/>
 		</Unit>
-		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/Containers/Sequence_Containers/List.h">
+		<Unit filename="/Users/skh/project/OURSTL/Containers/Sequence_Containers/List.h">
 			<Option target="OURSTLV2"/>
 		</Unit>
-		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/Containers/Sequence_Containers/Vector.h">
+		<Unit filename="/Users/skh/project/OURSTL/Containers/Sequence_Containers/Vector.h">
 			<Option target="OURSTLV2"/>
 		</Unit>
-		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/OurSTL.h">
+		<Unit filename="/Users/skh/project/OURSTL/OurSTL.h">
 			<Option target="OURSTLV2"/>
 		</Unit>
-		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/main.cpp">
+		<Unit filename="/Users/skh/project/OURSTL/main.cpp">
 			<Option target="OURSTLV2"/>
 		</Unit>
-		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/CMakeLists.txt">
+		<Unit filename="/Users/skh/project/OURSTL/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
