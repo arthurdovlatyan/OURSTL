@@ -10,8 +10,8 @@
 #include <stdlib.h>  // For malloc() and free()
 #include <iostream>  // For std::cout
 #include <ostream>   // For std::endl
-// The following headers contain stuff that main() uses.
-#include <list>      // For std::list
+
+
 
 
 template <typename T> class Mallocator {
@@ -237,14 +237,8 @@ void alg(Iter first, Iter last)
 class AAA {
         typedef std::input_iterator_tag iterator_category;
     };
-int main(int argc, char **argv) {
-    std::forward_list<int> x;
 
-    x.resize(15);
-    try {
-        OurSTL::Array<int, 10> a({1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-        OurSTL::Array b(a);
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
-    }
+
+int main(int argc, char **argv) {
+
 }

@@ -1,5 +1,5 @@
 //
-// Created by arthurdovlat on 3/18/21.
+// Created by arthurdovlat, sargiskh, hovhannes  on 3/18/21.
 //
 
 #ifndef OURSTL_FORWARD_LIST_H

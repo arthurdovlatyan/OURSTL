@@ -1,5 +1,5 @@
 //
-// Created by arthurdovlat on 3/18/21.
+// Created by arthurdovlat, sargiskh, hovhannes on 3/18/21.
 //
 
 #ifndef OURSTL_ARRAY_H
@@ -217,11 +217,10 @@ namespace OurSTL {
             return const_iterator(array);
         }
 
-        constexpr T* begin() noexcept;
-        constexpr const T* begin() const noexcept;
 
 
-        constexpr const T* cbegin() const noexcept;
+
+
 
 
         /*

@@ -1,5 +1,5 @@
 //
-// Created by arthurdovlat on 3/18/21.
+// Created by arthurdovlat, sargiskh, hovhannes  on 3/18/21.
 //
 
 #ifndef OURSTLV2_LIST_H
