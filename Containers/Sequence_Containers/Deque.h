@@ -381,16 +381,16 @@ namespace OurSTL {
 
         Deque_impl m_impl;
 
-        T_alloc_type& m_get_T_allocator() noexcept {
+        T_alloc_type& m_get_Tp_allocator() noexcept {
             return *static_cast<T_alloc_type*>(&this->m_impl);
         }
 
-        const T_alloc_type& m_get_T_allocator() const noexcept {
-            return *static_cast<T_alloc_type*>(&this->m_impl);
+        const T_alloc_type& m_get_Tp_allocator() const  {
+            return *static_cast<const T_alloc_type*>(&this->m_impl);
         }
 
         Map_alloc_type m_get_map_allocator() const noexcept {
-            return Map_alloc_type(m_get_T_allocator());
+            return Map_alloc_type(m_get_Tp_allocator());
         }
 
         Ptr m_allocate_node() {
@@ -461,11 +461,11 @@ namespace OurSTL {
         Deque_impl m_move_impl() {
             if (!m_impl.m_map)
                 return std::move(m_impl);
-            T_alloc_type __alloc{m_get_T_allocator()};
+            T_alloc_type __alloc{m_get_Tp_allocator()};
             T_alloc_type __sink __attribute((__unused__)) {std::move(__alloc)};
             Deque_base __empty{__alloc};
             __empty.m_initialize_map(0);
-            Deque_impl ret{std::move(m_get_T_allocator())};
+            Deque_impl ret{std::move(m_get_Tp_allocator())};
             m_impl.m_swap_data(ret);
             m_impl.m_swap_data(__empty.m_impl);
             return ret;
@@ -473,7 +473,7 @@ namespace OurSTL {
     public:
 
         Alloc get_allocator() const noexcept {
-            return Alloc(m_get_T_allocator());
+            return Alloc(m_get_Tp_allocator());
         }
 
         Deque_base() : m_impl() {

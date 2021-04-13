@@ -573,12 +573,12 @@ namespace OurSTL {
                 void push_back(T&& x) noexcept {
                     this->insert(end(),std::move(x));
                 }
-
-                template<typename... Args>
-                reference emplace_back(Args&&... args) {
-                    this->insert(end(), std::forward<Args>(args)...);
-                    return back();
-                }
+//
+//                template<typename... Args>
+//                reference emplace_back(Args&&... args) {
+//                    this->insert(end(), std::forward<Args>(args)...);
+//                    return back();
+//                }
 
                 void pop_back() noexcept {
                     this->erase(iterator(this->impl.node.prev));

@@ -233,6 +233,7 @@ void alg(Iter first, Iter last)
 
 #include <map>
 #include <deque>
+#include <stack>
 
 class AAA {
         typedef std::input_iterator_tag iterator_category;
@@ -240,5 +241,6 @@ class AAA {
 
 
 int main(int argc, char **argv) {
+
 
 }
