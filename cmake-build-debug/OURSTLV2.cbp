@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/Containers/Adapter_Containers/Queue.h">
+			<Option target="OURSTLV2"/>
+		</Unit>
+		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/Containers/Adapter_Containers/Stack.h">
+			<Option target="OURSTLV2"/>
+		</Unit>
 		<Unit filename="/home/arthurdovlat/CLionProjects/OURSTL/Containers/Sequence_Containers/Array.h">
 			<Option target="OURSTLV2"/>
 		</Unit>

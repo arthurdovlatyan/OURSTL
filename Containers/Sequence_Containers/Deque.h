@@ -37,7 +37,6 @@ namespace OurSTL {
         static size_t s_buffer_size() noexcept {
             return deque_buff_size(sizeof(T));
         }
-
         typedef std::random_access_iterator_tag iterator_category;
 
 
@@ -124,7 +123,6 @@ namespace OurSTL {
             return *this;
         }
 
-
         Deque_iterator operator+(std::ptrdiff_t n) const noexcept {
             Deque_iterator tmp = *this;
             return tmp += n;
@@ -151,6 +149,7 @@ namespace OurSTL {
         friend bool operator==(const Deque_iterator& x, const Deque_iterator<T,Refr,PtrR>& y) noexcept {
             return x.m_cur == y.m_cur;
         }
+
         friend bool operator!=(const Deque_iterator& x, const Deque_iterator& y) noexcept {
             return !(x.m_cur == y.m_cur);
         }
@@ -197,11 +196,6 @@ namespace OurSTL {
         friend bool operator>=(const Deque_iterator& x, const Deque_iterator<T,Refr,PtrR>& y) noexcept {
             return !(y > x);
         }
-
-
-
-
-
 
     };
 
@@ -329,7 +323,7 @@ namespace OurSTL {
     Deque_iterator<T,T&,T*> move_backwards(Deque_iterator<T, T&, T*> first, Deque_iterator<T, T&, T*> last, Deque_iterator<T, T&, T*> result) {
         return move_backwards(Deque_iterator<T, const T&, const T*>(first),Deque_iterator<T, const T&, const T*>(last),Deque_iterator<T, const T&, const T*>(result));
     }
-    // TODO implement operator - and +
+
 
     template<typename T, typename Alloc>
     class Deque_base {
@@ -340,8 +334,6 @@ namespace OurSTL {
         typedef typename Alloc_traits::const_pointer Ptr_const;
         typedef typename Alloc_traits::template rebind<Ptr>::other Map_alloc_type;
         typedef typename __gnu_cxx::__alloc_traits<Map_alloc_type> Map_alloc_traits;
-
-
 
     public:
         typedef Deque_iterator<T, T&, Ptr>	  iterator;
@@ -1209,8 +1201,7 @@ namespace OurSTL {
         }
 
 
-        void
-        m_move_assign2(Deque &&x, std::true_type) {
+        void m_move_assign2(Deque &&x, std::true_type) {
             // Make a copy of the original allocator state.
             auto __alloc = x.m_get_Tp_allocator();
             // The allocator propagates so storage can be moved from x,
@@ -1219,7 +1210,6 @@ namespace OurSTL {
             // Move the corresponding allocator state too.
             m_get_Tp_allocator() = std::move(__alloc);
         }
-
 
         void m_move_assign2(Deque &&x, std::false_type) {
             if (x.m_get_Tp_allocator() == this->m_get_Tp_allocator()) {
@@ -1236,15 +1226,12 @@ namespace OurSTL {
             }
         }
 
-
-        //TODO
-
         template<class InputIt>
         void m_assign_dispatch(InputIt first, InputIt last, std::false_type) {
             m_assign_aux(first, last, std::__iterator_category(first));
         }
 
-        // TODO
+
         void m_fill_assign(size_t n, const T &val) {
             if (n > size()) {
                 fill(begin(), end(), val);
@@ -1299,7 +1286,6 @@ namespace OurSTL {
             }
         }
 
-
         void m_pop_back_aux() {
             m_deallocate_node(this->m_impl.m_finish.m_first);
             this->m_impl.m_finish._M_set_node(this->m_impl.m_finish.m_node - 1);
@@ -1327,8 +1313,6 @@ namespace OurSTL {
 
 
     public:
-
-
         size_t max_size() const noexcept {
             return s_max_size(m_get_Tp_allocator());
         }
@@ -1337,7 +1321,6 @@ namespace OurSTL {
             m_impl.m_swap_data(x.m_impl);
             Alloc_traits::_S_on_swap(m_get_Tp_allocator(), x.m_get_T_allocator());
         }
-
 
         iterator erase(const_iterator first, const_iterator last) {
             return m_erase(first.m_const_cast(), last.m_const_cast());
@@ -1368,7 +1351,6 @@ namespace OurSTL {
         }
 
         void clear() noexcept { m_erase_at_end(begin()); }
-
 
         iterator insert(const_iterator position, T &&x) { return emplace(position, std::move(x)); }
 
@@ -1407,8 +1389,6 @@ namespace OurSTL {
                 return m_insert_aux(position._M_const_cast(),
                                      std::forward<Args>(args)...);
         }
-
-
 
         void
         pop_back() noexcept {
@@ -1462,7 +1442,6 @@ namespace OurSTL {
                 m_push_back_aux(__x);
         }
 
-
         template<typename... Args>
         reference emplace_front(Args &&... args) {
             if (this->m_impl.m_start.m_cur != this->m_impl.m_start.m_first)
@@ -1476,7 +1455,6 @@ namespace OurSTL {
                 m_push_front_aux(std::forward<Args>(args)...);
             return front();
         }
-
 
         void push_front(T&& x) { emplace_front(std::move(x)); }
 
@@ -1493,13 +1471,11 @@ namespace OurSTL {
             return (*this)[nn];
         }
 
-
         const_reference at(size_t n) const {
             m_range_check(n);
             return (*this)[n];
         }
 
-        // TODO
         reference front() noexcept {
             __glibcxx_requires_nonempty();
             return *begin();
