@@ -12,6 +12,8 @@
 #include "Containers/Sequence_Containers/Deque.h"
 #include "Containers/Sequence_Containers/List.h"
 #include "Containers/Sequence_Containers/Forward_List.h"
+#include "Containers/Adapter_Containers/Queue.h"
+#include "Containers/Adapter_Containers/Stack.h"
 
 //
 #endif //OURSTLV2_OURSTL_H
